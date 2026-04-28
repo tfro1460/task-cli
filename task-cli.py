@@ -26,10 +26,20 @@ def delete_task(id):
     pass
 
 def mark_task_in_progress(id):
-    pass
+    try:
+        tasks[args.id - 1].status = "in-progress"
+        save_tasks()
+        print(f"Task marked in progress successfully (ID: {args.id})")
+    except IndexError:
+        print("That id doesn't exist type 'list' to see the ids of all tasks.")    
 
 def mark_task_done(id):
-    pass
+    try:
+        tasks[args.id - 1].status = "done"
+        save_tasks()
+        print(f"Task marked done successfully (ID: {args.id})")
+    except IndexError:
+        print("That id doesn't exist type 'list' to see the ids of all tasks.")    
 
 def list_tasks():
     pass
