@@ -1,4 +1,4 @@
-import json, argparse, os
+import json, argparse
 from datetime import datetime
 
 class Task:
