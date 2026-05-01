@@ -10,22 +10,34 @@ class Task:
         self.updatedAt = updatedAt if updatedAt else datetime.now().isoformat()
 
 def add_task(args):
+    # Add a new task and save it to the json file before printing a success message
     tasks.append(Task(args.description))
     save_tasks()
     print(f"Task added successfully (ID: {len(tasks)})")
 
 def update_task(args):
+    # Changes the description for a task, saves it to the json file before printing a success or fail message.
     try:
         tasks[args.id - 1].description = args.description
+        tasks[args.id - 1].updatedAt = datetime.now().isoformat
         save_tasks()
         print(f"Task updated successfully (ID: {args.id})")
     except IndexError:
         print("That id doesn't exist type 'list' to see the ids of all tasks.")
 
-def delete_task(id):
-    pass
+def delete_task(args):
+    # Delete a task, updates the ids, save it to the json and print a success or fail message.
+    try:
+        tasks.remove(tasks[args.id - 1])
+        update_ids()
+        save_tasks()
+        print(f"Task deleted successfully (ID: {args.id})")
+        print("Some ids may have changed, use the 'list' command to view changes.")
+    except IndexError:
+        print("That id doesn't exist type 'list' to see the ids of all tasks.")
 
-def mark_task_in_progress(id):
+def mark_task_in_progress(args):
+    # Changes the status to in-progress for a task, saves it to the json file before printing a success or fail message.
     try:
         tasks[args.id - 1].status = "in-progress"
         save_tasks()
@@ -33,7 +45,8 @@ def mark_task_in_progress(id):
     except IndexError:
         print("That id doesn't exist type 'list' to see the ids of all tasks.")    
 
-def mark_task_done(id):
+def mark_task_done(args):
+    # Changes the status to in-progress for a task, saves it to the json file before printing a success or fail message.
     try:
         tasks[args.id - 1].status = "done"
         save_tasks()
@@ -41,13 +54,26 @@ def mark_task_done(id):
     except IndexError:
         print("That id doesn't exist type 'list' to see the ids of all tasks.")    
 
-def list_tasks():
-    pass
+def list_tasks(args):
+    # Loops through all of the tasks in the array and prints them out into the terminal.
+    if args.status:
+        for task in tasks:
+            if task.status == args.status:
+                print(f"{task.id}: {task.description} ({task.status})")
+    else:
+        for task in tasks:
+            print(f"{task.id}: {task.description} ({task.status})")
 
 def save_tasks():
+    # Saves the edited tasks to the json file.
     tasks_dict = [vars(task) for task in tasks]
     with open('tasks.json', 'w') as f:
         json.dump(tasks_dict, f)
+
+def update_ids():
+    # Updates the ids by looping through all the tasks and reassigning the id variable for each one
+    for i in range(len(tasks)):
+        tasks[i].id = i
 
 # Open json file and load the data
 try:
