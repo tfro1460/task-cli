@@ -1,0 +1,20 @@
+[project]
+name = "task-cli"
+version = "1.0.0"
+description = "A CLI application to manage tasks."
+authors = [{ name = "Toby", email = "tobycfrost14@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = ["tabulate", "argparse"]
+
+[project.urls]
+Homepage = "https://github.com/tfro1460/TaskTracker"
+
+[project.scripts]
+task-cli = "task_cli:main"
+
+[tool.uv]
+package = true
+
+[tool.setuptools]
+py-modules = ["task_cli"]
