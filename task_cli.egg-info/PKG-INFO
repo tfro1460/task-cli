@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: task-cli
+Version: 1.0.0
+Summary: A CLI application to manage tasks.
+Author-email: Toby <tobycfrost14@gmail.com>
+Project-URL: Homepage, https://github.com/tfro1460/TaskTracker
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: tabulate
+Requires-Dist: argparse

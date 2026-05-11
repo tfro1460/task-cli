@@ -15,4 +15,4 @@ dependencies = ["tabulate", "argparse"]
 Homepage = "https://github.com/tfro1460/TaskTracker"
 
 [project.scripts]
-task-cli = "task_cli:main"
+task-cli = "task-cli:main"
