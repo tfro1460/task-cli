@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "task-cli"
 version = "1.0.0"
@@ -12,9 +16,3 @@ Homepage = "https://github.com/tfro1460/TaskTracker"
 
 [project.scripts]
 task-cli = "task_cli:main"
-
-[tool.uv]
-package = true
-
-[tool.setuptools]
-py-modules = ["task_cli"]
