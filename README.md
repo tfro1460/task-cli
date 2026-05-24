@@ -1,6 +1,8 @@
 # task-cli
 task-cli is a simple command line interface for tracking and managing tasks. With task-cli you can seemlessly track what you need to do, what you have done and what you are currently working on.
 
+This project was created while following this [backend developer roadmap](https://roadmap.sh/projects/task-tracker)
+
 ## Installation
 You can use the package manager pip to istall task-cli directly from your terminal.
 
